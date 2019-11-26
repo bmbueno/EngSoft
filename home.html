@@ -9,6 +9,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <script src="script.js"></script>
+
     <title>Solução Digital - Agendamento de reuniões</title>
 </head>
 <body>
@@ -19,31 +22,34 @@
 
         <div class="form-group">
             <label>Nome do orientador: </label>
-            <input class="form-control" type="text">
+            <input class="form-control" type="text" id="advisor">
         </div>
 
         <div class="form-group">
                 <label>Sala: </label>
-                <select class="form-control" id="salaAgendamento">
+                <select class="form-control" id="room">
                     <option> Sala A - (capacidade para 15 pessoas) </option>
                     <option> Sala B - (capacidade para 20 pessoas) </option>
                     <option> Sala C - (capacidade para 4 pessoas) </option>
                 </select>
         </div>
-        <div class="container" style="width: 400px">
-            <input type="date" id="picker" class="form-control" required pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}">
+        <div>
+            <input type="date" id="day" class="form-control">
+            <input type="time" id="time" class="form-control">
         </div>
         <div>
-            <input type="submit" value="Marcar reunião">
+            <input type="submit" onclick="fun.markMeeting()" value="Marcar reunião">
         </div>
     </form>
-    
 
-    <script>
-        var db = openDatabase('Reunioes', '1.0', 'BancoDeDados', 2048 * 1024);
-        db.transaction(function(criar){
-            criar.executeSql("CREATE TABLE reunioes ( ID PRIMARY KEY, orientador TEXT, sala TEXT, data DATE, horario TIME)");
-        });
-    </script>
+    <table >
+        <thead>
+            <th>Orientador</th>
+        </thead>
+        <tbody id="listaReunioes">
+            
+        </tbody>
+    </table>
+    
 </body>
 </html>
