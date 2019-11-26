@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+      <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" ></script>
+
+      <script type="text/javascript">
+        $(document).ready( function () {
+          $('#example').DataTable();
+        } );
+      </script>
+
+
+        <title>Solução Digital - Agendamento de reuniões</title>
+
+        <form id="informacoes">
+          <div class="form-group">
+              <label>Nome do orientador: </label>
+              <input type="text" id="professor">
+          </div>
+          <div class="form-group">
+              <label>Sala da reuniao: </label>
+              <input type="text" id="sala">
+          </div>
+          <div class="form-group">
+              <label>Data da reuniao: </label>
+              <input type="text" id="data">
+          </div>
+        </form>
+
+        <script>
+            function adicionaLinha(idTabela) {
+              var form = document.getElementById('formulario');
+              var professor = document.getElementById('professor');
+              var sala = document.getElementById('sala');
+              var data = document.getElementById('data');
+
+              var table = $('#example').DataTable();
+              var rowNode = table
+                  .row.add( [ professor.value, sala.value, data.value,"<button onclick='removeLinha(this)'>Cancelar reunião</button>"] )
+                  .draw()
+                  .node();
+
+              $( rowNode )
+                  .css( 'color', 'black' )
+                  .animate( { color: 'black' } );
+            }
+            // funcao remove uma linha da tabela
+            function removeLinha(linha) {
+              var i=linha.parentNode.parentNode.rowIndex;
+              document.getElementById('example').deleteRow(i);
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="adicionaLinha('example')">Marcar Reuniao</button>
+
+        <div style="width:900px; border:1px solid black ; border-top:10px">
+            <table id="example" class="display" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Professor</th>
+                    <th>Sala</th>
+                    <th>Data</th>
+                    <th>Acao</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                      <td>Lucas</td>
+                      <td>503</td>
+                      <td>19/12/2019</td>
+                      <td><button onclick='removeLinha(this)'>Cancelar reunião</button></td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+    </body>
+</html>
