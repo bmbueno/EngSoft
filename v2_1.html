@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+      <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" ></script>
+
+      <script type="text/javascript">
+        $(document).ready( function () {
+          $('#example').DataTable();
+        } );
+      </script>
+
+
+        <title>Solução Digital - Agendamento de reuniões</title>
+        
+        <form id="informacoes">
+          <label>Nome do orientador: </label>
+          <input type="text" id="professor">
+          <label>Grupo: </label>
+          <input type="text" id="grupo">
+          <label>Sala da reuniao: </label>
+          <input type="text" id="sala">
+          <label>Data da reuniao: </label>
+          <input type="text" id="data">
+        </form>
+        <script>
+            //Funcao adiciona uma nova linha na tabela
+            function adicionaLinha(idTabela) {
+                var form = document.getElementById('formulario');
+                var professor = document.getElementById('professor');
+                var data = document.getElementById('grupo');
+                var sala = document.getElementById('sala');
+                var data = document.getElementById('data');
+
+                var tabela = document.getElementById(idTabela);
+                var numeroLinhas = tabela.rows.length;
+                var linha = tabela.insertRow(numeroLinhas);
+                var celula1 = linha.insertCell(0);
+                var celula2 = linha.insertCell(1);
+                var celula3 = linha.insertCell(2);
+                var celula4 = linha.insertCell(3);
+                var celula5 = linha.insertCell(4);
+
+                celula1.innerHTML = professor.value;
+                celula2.innerHTML = grupo.value;
+                celula3.innerHTML = sala.value;
+                celula4.innerHTML = data.value;
+                celula5.innerHTML =  "<button onclick='removeLinha(this)'>Cancelar reunião</button>";
+            }
+
+            // funcao remove uma linha da tabela
+            function removeLinha(linha) {
+              var i=linha.parentNode.parentNode.rowIndex;
+              document.getElementById('example').deleteRow(i);
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="adicionaLinha('example')">Marcar Reuniao</button>
+
+        <div style="width:900px; border:1px solid black ; border-top:10px">
+            <table id="example" class="display" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Professor</th>
+                    <th>Grupo</th>
+                    <th>Sala</th>
+                    <th>Data</th>
+                    <th>Acao</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                      <td>Lucas</td>
+                      <td>Computacao</td>
+                      <td>503</td>
+                      <td>16/18/19</td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+    </body>
+</html>
