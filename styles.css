@@ -1,0 +1,16 @@
+form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form > div {
+    margin: 10px;
+}
