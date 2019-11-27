@@ -1,17 +1,19 @@
 class reuniao {
-    constructor(sala, orientador, dia, horario){
+    constructor(id, sala, orientador, dia, horario){
+        this.id = id;
         this.sala = sala;
         this.orientador = orientador;
         this.dia = dia;
         this.horario = horario;
         this.status = 'marcada';
+        this.participantes = [];
     }
 }
 class funcionario {
     constructor(nome, setor){
         this.nome = nome;
         this.setor = setor;
-        this.reunioes = [];
+        this.reunioesId = '';
     }
 
     marcarReuniao(){
@@ -23,9 +25,8 @@ class funcionario {
 
         var reuniao1 = new reuniao(sala, orientador, dia, horario);
 
-        this.reunioes.push(reuniao1);
-        alert( 'rerea');
-        location.href("http://pt.stackoverflow.com");
+        this.reunioesId = this.reunioesId + reuniao1.id;
+
     }
 }
 

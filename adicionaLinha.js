@@ -1,16 +1,14 @@
+var imported = document.createElement('script');
+imported.src = 'databases.js';
+document.head.appendChild(imported); 
+
 function adicionaLinha(idTabela) {
     var form = document.getElementById('formulario');
-    var orientador = document.getElementById('orientador');
-    var sala = document.getElementById('sala');
-    var data = document.getElementById('data');
+    var orientador = document.getElementById('orientador').value;
+    var sala = document.getElementById('sala').value;
+    var dia = document.getElementById('dia').value;
+    var horario = document.getElementById('horario').value;
 
-    var table = $('#example').DataTable();
-    var rowNode = table
-        .row.add( [ orientador.value, sala.value, data.value,"<button onclick='removeLinha(this)'>Cancelar reunião</button>"] )
-        .draw()
-        .node();
-
-    $( rowNode )
-        .css( 'color', 'black' )
-        .animate( { color: 'black' } );
+    novaReuniao(sala, orientador, dia, horario);
+    mostrarReunioes();
 }

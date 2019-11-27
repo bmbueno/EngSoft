@@ -1,8 +1,9 @@
-function removeLinha(linha) {
-  var row = linha.parentNode.parentNode.rowIndex;
-  var table = $('#example').DataTable();
-  var rowNode = table
-      .row(row)
-      .remove()
-      .draw();
+var imported = document.createElement('script');
+imported.src = 'databases.js';
+document.head.appendChild(imported); 
+
+
+function removeLinha(id) {
+  cancelaReuniao(id);
+  location.reload();
 }
