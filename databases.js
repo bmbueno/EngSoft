@@ -1,5 +1,6 @@
 var db = openDatabase('Reunioes', '1.0', 'BancoDeDados', 2048 * 1024);
 db.transaction(function(criar){
+    //criar.executeSql("DROP TABLE reunioes");
     criar.executeSql("CREATE TABLE IF NOT EXISTS reunioes ( id INTEGER PRIMARY KEY, orientador TEXT, sala TEXT, data DATE, horario TIME)");
     });
 
@@ -30,4 +31,16 @@ function mostrarReunioes(){
     },null);
     
 }
+function cancelaReuniao(id) {
 
+    // $( "button.excluir" ).click(function() {
+    //   $(this).parent().parent().remove();
+    // });
+    
+    db.transaction(function(tx){
+      tx.executeSql('DELETE FROM reunioes WHERE id=?',[id]);
+  });
+  
+    setTimeout(function() {location.reload();},10);
+   
+  }
