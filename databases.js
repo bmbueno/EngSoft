@@ -5,12 +5,13 @@ db.transaction(function(criar){
     });
 
 db.transaction(function(criar){
-    criar.executeSql("CREATE TABLE IF NOT EXISTS funcionarios ( id INTEGER PRIMARY KEY, nome TEXT, setor TEXT, reunioes TEXT)");
+    //criar.executeSql("DROP TABLE funcionarios");
+    criar.executeSql("CREATE TABLE IF NOT EXISTS funcionarios ( id INTEGER PRIMARY KEY, nome TEXT, setor TEXT, email TEXT, reunioes TEXT)");
     });
 
-function novoFuncionario(sala, orientador, dia, horario){
+function novoFuncionario(nome, setor, email, reunioes){
     db.transaction(function(tx){
-        tx.executeSql('INSERT INTO funcionarios (nome, setor, reunioes) VALUES(?,?,?,?)',[nome, setor, reunioes]);
+        tx.executeSql('INSERT INTO funcionarios (nome, setor, email, reunioes) VALUES(?,?,?,?)',[nome, setor, email, reunioes]);
     });
 }
 
@@ -23,7 +24,8 @@ function mostrarReunioes(){
             for(var i = 0; i < rows.length; i ++){
                 var table = $('#example').DataTable();
                 var rowNode = table
-                .row.add( [ rows[i].orientador, rows[i].sala, rows[i].data, rows[i].horario,"<button onclick='cancelaReuniao("+ rows[i].id +")' class='btn btn-danger btn-sm' >Cancelar reunião</button>"] )
+                .row.add( [ rows[i].orientador, rows[i].sala, rows[i].data, rows[i].horario,
+                    "<button onclick='cancelaReuniao("+ rows[i].id +")' class='btn btn-danger btn-sm' >Cancelar reunião</button>"] )
                 .draw()
                 .node();
             }
