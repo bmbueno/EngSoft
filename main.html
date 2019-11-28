@@ -12,7 +12,10 @@
       <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" ></script>
 
       <script src="iniciaDataTable.js"></script>
-      <script src="databases.js">mostrarReunioes();</script>
+      <script src="databases.js"></script>
+      <script src="cancelaReuniao.js"></script>
+      [<script src="criaReuniao.js"></script>
+
       <script>mostrarReunioes();</script>
       
       <link rel="stylesheet" type="text/css" href="styles.css">
@@ -50,9 +53,8 @@
                 </div>
             </form>
     
-            <script src="adicionaLinha.js"></script>
-            <script src="removeLinha.js"></script>
-        <button class="btn btn-dark" onclick="adicionaLinha('example')">Marcar Reuniao</button>
+            
+        <button class="btn btn-dark" onclick="criaReuniao('example')">Marcar Reuniao</button>
 
 
         <div class='box 'id='lista' style="width:900px; border:1px solid gray ; border-top:10px">
