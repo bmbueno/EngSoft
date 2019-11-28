@@ -12,6 +12,15 @@ class reuniao {
         this.status = 'marcada';
         this.participantes = [];
     }
+    statusRealizada(){
+        this.status = 'realizada';
+    }
+    statusCancelada(){
+        this.status = 'cancelada';
+    }
 
+    adicionaConvidados(convidado){
+        this.participantes.push(convidado);
+    }
     
 }
