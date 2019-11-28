@@ -5,5 +5,11 @@ document.head.appendChild(imported);
 
 function removeLinha(id) {
   cancelaReuniao(id);
-  location.reload();
+
+  // $( "button.excluir" ).click(function() {
+  //   $(this).parent().parent().remove();
+  // });
+
+  setTimeout(function() {location.reload();},10);
+ 
 }

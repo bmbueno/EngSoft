@@ -10,5 +10,5 @@ function adicionaLinha(idTabela) {
     var horario = document.getElementById('horario').value;
 
     novaReuniao(sala, orientador, dia, horario);
-    mostrarReunioes();
+    
 }

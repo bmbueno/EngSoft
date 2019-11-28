@@ -9,7 +9,13 @@ db.transaction(function(criar){
     
 function novaReuniao(sala, orientador, dia, horario){
     db.transaction(function(tx){
-        tx.executeSql('INSERT INTO reunioes (orientador, sala, data, horario) VALUES(?,?,?,?)',[orientador,sala, dia, horario]);
+        tx.executeSql('INSERT INTO reunioes (orientador, sala, data, horario) VALUES(?,?,?,?)',[orientador,sala, dia, horario], function(tx, id){
+            var table = $('#example').DataTable();
+            var rowNode = table
+            .row.add( [ orientador, sala, dia, horario,"<button onclick='removeLinha("+ id.insertId +")' class='btn btn-danger btn-sm excluir' >Cancelar reunião</button>"] )
+            .draw()
+            .node();
+        });
     });
 }
 
@@ -37,7 +43,6 @@ function mostrarReunioes(){
                 .row.add( [ rows[i].orientador, rows[i].sala, rows[i].data, rows[i].horario,"<button onclick='removeLinha("+ rows[i].id +")' class='btn btn-danger btn-sm' >Cancelar reunião</button>"] )
                 .draw()
                 .node();
-
             }
         });
     },null);
