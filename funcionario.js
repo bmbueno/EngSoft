@@ -81,13 +81,4 @@ class supervisor extends funcionario {
         });
         
     }
-    desmarcaReuniao(id) {
-        // $( "button.excluir" ).click(function() {
-        //   $(this).parent().parent().remove();
-        // });
-        cancelaReuniao(id);
-        
-            
-       
-      }
     }
